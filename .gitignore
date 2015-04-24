@@ -123,27 +123,28 @@ def p_statement_mprl(p):
                 print("Voy por la coma ,")
 
         def p_statement_tipo(p):
-            """tipo : INT
-                    | FLOAT
-                    | BOOL"""
-
-        def p_statement_metestart(p):
-            """metestart : """
+            """tipo : INT meteint
+                    | FLOAT metefloat
+                    | BOOL metebool"""
+            
+            
+        def p_statement_metesint(p):
+            """meteint : """
             if contador == 1:
                 global ListadeTokens3
-                print("Voy por start")
+                print("Voy por int")
 
-        def p_statement_metestart(p):
-            """metestart : """
+        def p_statement_metefloat(p):
+            """metefloat : """
             if contador == 1:
                 global ListadeTokens3
-                print("Voy por start")
+                print("Voy por float")
                 
-        def p_statement_metestart(p):
-            """metestart : """
+        def p_statement_metesbool(p):
+            """metebool : """
             if contador == 1:
                 global ListadeTokens3
-                print("Voy por start")
+                print("Voy por bool")
 
         def p_statement_bloque(p):
             """bloque : bloque1"""
@@ -158,7 +159,7 @@ def p_statement_mprl(p):
                         | condicion"""
 
         def p_statement_asignacion(p):
-            """asignacion : ID blankspace IGUAL blankspace expresion PUNTOYCOMA blankspace commentasig"""
+            """asignacion : ID meteid blankspace IGUAL meteigual blankspace expresion PUNTOYCOMA metepuntoycoma blankspace commentasig"""
 
         def p_statement_commentasig(p):
             """commentasig :
