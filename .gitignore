@@ -1,190 +1,274 @@
-__author__ = 'Geraldine'
+def p_statement_mprl(p):
+            """mprl : mprl2 """
 
-#Expresion de prueba
-expresion = ["a","!"]
-print(expresion)
-expresion.reverse()
-print(expresion)
+        def p_statement_mprl2(p):
+            """mprl2 : START metestart blankspace commentmp TURNON meteturnon blankspace commentmp blankspace  programa TURNOFF meteturnoff blankspace commentmp END meteend commentmp
+                    | FUNCTION metefuncion blankspace ID meteid blankspace commentmp PARENTESISIZQ meteparizq blankspace parametrosmp PARENTESISDER meteparder blankspace LLAVEIZQ metellaveizq blankspace commentmp programa LLAVEDER metellaveder blankspace commentmp mprl"""
+
+        def p_statement_metestart(p):
+            """metestart : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por start")
+        def p_statement_meteturnon(p):
+            """meteturnon : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por turnon")
+        def p_statement_meteturnoff(p):
+            """meteturnoff : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por turnoff")
+        def p_statement_meteend(p):
+            """meteend : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por end")
+
+        def p_statement_metefuncion(p):
+            """metefuncion : """
+            if contador == 1:
+                global ListadeTokens3
+                #self.Mete_Start(ListadeTokens3)
+                #self.Mete_Turnon(ListadeTokens3)
+                #self.Mete_Turnoff(ListadeTokens3)
+                #self.Mete_End(ListadeTokens3)
+                #self.Mete_Function(ListadeTokens3)
+                #self.Mete_Parentesis_Izquierdo(ListadeTokens3)
+                #self.Mete_Parentesis_Derecho(ListadeTokens3)
+                #self.Mete_Llave_Izquierda(ListadeTokens3)
+                #self.Mete_Llave_Derecha(ListadeTokens3)
+                print("Voy por la funcion")
+
+        def p_stametement_meteid(p):
+            """meteid : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por ID")
+
+        def p_statement_meteparizq(p):
+            """meteparizq : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por (")
+
+        def p_statement_meteparder(p):
+            """meteparder : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por )")
+
+        def p_statement_metellaveizq(p):
+            """metellaveizq : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por {")
+
+        def p_statement_metellaveder(p):
+            """metellaveder : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por }")
+
+        def p_statement_commentmp(p):
+            """commentmp :
+                        | comment"""
+
+        def p_statement_parametrosmp(p):
+            """parametrosmp :
+                            | parametros"""
+
+        def p_statement_programa(p):
+            """ programa : vars bloque
+                        | bloque"""
+
+        def p_statement_vars(p):
+            """vars : parametros4 PUNTOYCOMA metepuntoycoma blankspace commentvars"""
+
+        def p_statement_metepuntoycoma(p):
+            """metepuntoycoma : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por ;")
+
+        def p_statement_varsvarcte(p):
+            """varsvarcte :
+                        | IGUAL meteigual blankspace varcte"""
+
+        def p_statement_meteigual(p):
+            """meteigual : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por =")
+
+        def p_statement_commentvars(p):
+            """commentvars :
+                        | comment"""
+
+        def p_statement_parametros4(p):
+            """parametros4 : parametros5"""
+
+        def p_statement_parametros5(p):
+            """parametros5 : tipo blankspace ID meteid blankspace varsvarcte blankspace parametros6"""
+
+        def p_statement_parametros6(p):
+            """parametros6 :
+                        | COMA metecoma blankspace parametros4"""
+
+        def p_statement_metecoma(p):
+            """metecoma : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por la coma ,")
+
+        def p_statement_tipo(p):
+            """tipo : INT
+                    | FLOAT
+                    | BOOL"""
+
+        def p_statement_metestart(p):
+            """metestart : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por start")
+
+        def p_statement_metestart(p):
+            """metestart : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por start")
+                
+        def p_statement_metestart(p):
+            """metestart : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por start")
+
+        def p_statement_bloque(p):
+            """bloque : bloque1"""
+
+        def p_statement_bloque1(p):
+            """bloque1 :
+                    | ejecucion bloque1
+                    | estatuto bloque1"""
+
+        def p_statement_estatuto(p):
+            """estatuto : asignacion
+                        | condicion"""
+
+        def p_statement_asignacion(p):
+            """asignacion : ID blankspace IGUAL blankspace expresion PUNTOYCOMA blankspace commentasig"""
+
+        def p_statement_commentasig(p):
+            """commentasig :
+                        | comment"""
+
+        def p_statement_expresion(p):
+            """expresion : exp expresion1"""
+
+        def p_statement_expresion1(p):
+            """expresion1 :
+                        | MAYORQUE blankspace exp
+                        | MENORQUE blankspace exp
+                        | AND blankspace exp
+                        | OR blankspace exp
+                        | NOT blankspace exp"""
+
+        def p_statement_exp(p):
+            """exp : exp1"""
+
+        def p_statement_exp1(p):
+            """exp1 : termino exp2"""
+
+        def p_statement_exp2(p):
+            """exp2 :
+                    | MAS blankspace exp1
+                    | MENOS blankspace exp1"""
+
+        def p_statement_termino(p):
+            """termino : termino2"""
+
+        def p_statement_termino2(p):
+            """termino2 : factor termino3"""
+
+        def p_statement_termino3(p):
+            """termino3 :
+                    | MULTIPLICA termino2
+                    | DIVIDE termino2"""
+
+        def p_statement_factor(p):
+            """factor : PARENTESISIZQ expresion PARENTESISDER
+                    | varcte blankspace
+                    | MAS blankspace varcte blankspace
+                    | MENOS blankspace varcte blankspace"""
+
+        def p_statement_varcte(p):
+            """varcte :
+                    | ID
+                    | CTEINT
+                    | CTEFLOAT"""
+
+        def p_statement_condicion(p):
+            """condicion : IF blankspace PARENTESISIZQ blankspace expresion PARENTESISDER commentcond blankspace LLAVEIZQ blankspace commentcond bloque LLAVEDER blankspace commentcond condic1
+                        | WHILE blankspace PARENTESISIZQ blankspace expresion PARENTESISDER commentcond blankspace LLAVEIZQ blankspace commentcond bloque LLAVEDER blankspace commentcond
+                        | DO blankspace commentcond LLAVEIZQ blankspace commentcond bloque LLAVEDER blankspace commentcond WHILE blankspace PARENTESISIZQ blankspace expresion PARENTESISDER blankspace commentcond"""
+
+        def p_statement_commentcond(p):
+            """commentcond :
+                        | comment"""
+
+        def p_statement_condic1(p):
+            """condic1 :
+                    | ELSE blankspace condic32"""
+
+        def p_statement_condic32(p):
+            """condic32 : IF blankspace PARENTESISIZQ blankspace expresion PARENTESISDER commentcond blankspace LLAVEIZQ blankspace commentcond bloque LLAVEDER blankspace commentcond condic1
+                        | commentcond LLAVEIZQ blankspace commentcond bloque LLAVEDER blankspace commentcond"""
+
+        def p_statement_parametros(p):
+            """parametros : parametros2"""
+
+        def p_statement_parametros2(p):
+            """parametros2 : tipo blankspace ID blankspace parametros3"""
+
+        def p_statement_parametros3(p):
+            """parametros3 :
+                        | COMA blankspace parametros2"""
+
+        def p_statement_ejecucion(p):
+            """ejecucion : GO blankspace commentej
+                        | STOP blankspace commentej
+                        | REVERSE blankspace commentej
+                        | TURNRIGHT blankspace commentej
+                        | TURNLEFT blankspace commentej
+                        | BEEP blankspace commentej
+                        | FUNCTION blankspace ID blankspace PARENTESISIZQ blankspace PARENTESISDER blankspace commentej"""
+
+        def p_statement_commentej(p):
+            """commentej :
+                        | comment"""
+
+        def p_statement_comment(p):
+            """comment : GATO comment2"""
+
+        def p_statement_comment2(p):
+            """comment2 :
+                        | ID comment2"""
 
 
-pilao=[]
-poper=[]
-t=[]
-global i
-i = 0
+        def p_statement_blankspace(p):
+            """blankspace :
+                        | BLANK quitablank"""
+
+        def p_statement_quitablank(p):
+            """quitablank : """
+            if contador == 1:
+                print("Quita Blank Space")
 
 
-c_op=[]     #Columna1: operadores
-c_opdo1=[]  #Coluumna2: operando1
-c_opdo2=[]  #Columna3: operando2
-c_res=[]    #Columna4: resultado
-
-#LLenado de temporales USELESS
-for index in range(100):
-    t.append(index)
-
-
-#Función que genera cuadruplos
-def genera_cuad( operador, opdo1, opdo2, resultado ):
-    c_op.append(operador)
-    c_opdo1.append(opdo1)
-    c_opdo2.append(opdo2)
-    c_res.append(resultado)
-
-#Funcion parentesis
-def meter_parent ():
-    print("Entro parent")
-    global i
-    if len(poper) != 0 and poper[len(poper)-1] == "(":
-        print("Paréntesis")
-        pilao_n=[] #Pila generada
-        poper_n=[] #Pila generada
-        pilao.append(pilao_n)
-        poper.append(poper_n)
-        if len(poper) != 0 and poper[len(poper)-1] == ")":
-            poper.pop()
-            op=poper.pop()
-            oper1=pilao.pop()
-            oper2=pilao.pop()
-            temp=t[i]
-            genera_cuad(op, oper1, oper2, temp)
-            i = i+1
-        elif len(poper) != 0 and poper[len(poper)-1] == "(":
-            meter_parent()
-
-#Funcion multiplicacion y division
-def meter_multdiv():
-    print("Entro div")
-    global i
-    if len(poper) != 0 and (poper[len(poper)-1] == "*" or poper[len(poper)-1] == "/") :
-        print("Multiplicación o División")
-        op=poper.pop()
-        oper1=pilao.pop()
-        oper2=pilao.pop()
-        temp=t[i]
-        genera_cuad(op, oper1, oper2, temp) #Funcion de generacion de cuadruplos !!!!
-        pilao.append(temp)
-        i=i+1
-
-#fucnion suma y resta
-def meter_sumres():
-    print("Entro suma")
-    global i
-    if len(poper) != 0 and (poper[len(poper)-1] == "+" or poper[len(poper)-1] == "-"):
-        print("Suma o resta")
-        op=poper.pop()
-        oper1=pilao.pop()
-        oper2=pilao.pop()
-        temp=t[i]
-        genera_cuad(op, oper1, oper2, temp)#Funcion de generacion de cuadruplos !!!!
-        pilao.append(temp)
-        i=i+1
-
-#Funcion igual
-def meter_igual():
-    print("Entro igual")
-    if len(poper) != 0 and poper[len(poper)-1] == "=":
-        print("Igual")
-        op=poper.pop()
-        der=pilao.pop()
-        izq=pilao.pop()
-        #VERIFICAR TIPOS CON CUBO
-        genera_cuad(op, der, -1, izq)#Funcion de generacion de cuadruplos !!!!
-
-#Fucnion mayor que
-def meter_mayor():
-    global i
-    print("Entro mayor que")
-    global i
-    if len(poper) != 0 and poper[len(poper)-1] == ">":
-        print("Mayor que")
-        op=poper.pop()
-        der=pilao.pop()
-        izq=pilao.pop()
-        temp=t[i]
-        genera_cuad(op, izq, der, temp)#Funcion de generacion de cuadruplos !!!!
-        i=i+1
-
-#Fucnion menor que
-def meter_menor():
-    global i
-    print("Entro menor que")
-    global i
-    if len(poper) != 0 and poper[len(poper)-1] == "<":
-        print("Menor que")
-        op=poper.pop()
-        der=pilao.pop()
-        izq=pilao.pop()
-        temp=t[i]
-        genera_cuad(op, izq, der, temp)#Funcion de generacion de cuadruplos !!!!
-        i=i+1
-
-#Fucnion not
-def meter_not():
-    global i
-    print("Entro not")
-    if len(poper) != 0 and poper[len(poper)-1] == "!":
-        print("Not")
-        op=poper.pop()
-        oper1=pilao.pop()
-        temp=t[i]
-        genera_cuad(op, oper1, -1, temp)#Funcion de generacion de cuadruplos !!!!
-        pilao.append(temp)
-        i=i+1
-
-#Fucnion or
-def meter_or():
-    global i
-    print("Entro or")
-    global i
-    if len(poper) != 0 and poper[len(poper)-1] == "|":
-        print("Or")
-        op=poper.pop()
-        der=pilao.pop()
-        izq=pilao.pop()
-        temp=t[i]
-        genera_cuad(op, izq, der, temp)#Funcion de generacion de cuadruplos !!!!
-        i=i+1
-
-#Fucnion and
-def meter_and():
-    global i
-    print("Entro and")
-    global i
-    if len(poper) != 0 and poper[len(poper)-1] == "&&":
-        print("And")
-        op=poper.pop()
-        der=pilao.pop()
-        izq=pilao.pop()
-        temp=t[i]
-        genera_cuad(op, izq, der, temp)#Funcion de generacion de cuadruplos !!!!
-        i=i+1
-
-#LLenado de stacks pilao, poper
-while len(expresion)>0:
-    if len(expresion) != 0:
-        #if token==id:
-        pilao.append(expresion.pop()) #Meter id
-    if len(expresion) != 0:
-        #else: TERMINAR VALIDACIÓN DE OPERADORES
-        poper.append(expresion.pop()) #Meter operador
-
-pilao.reverse()
-poper.reverse()
-print(poper)
-print(pilao)
-
-
-while len(poper) > 0:
-    meter_multdiv()
-    meter_sumres()
-    meter_igual()
-    meter_parent()
-    meter_mayor()
-    meter_menor()
-    meter_not()
-    meter_and()
-    meter_or()
-
-print(c_op, "\n", c_opdo1, "\n", c_opdo2, "\n", c_res)
-#REVISAR PILA TIPOS con cubo
+        def p_error(p):
+            if p:
+                print("Syntax error at '%s'" % p.value)
+            else:
+                print("Syntax error at EOF")
