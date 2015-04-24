@@ -1,57 +1,190 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
+__author__ = 'Geraldine'
 
-# C extensions
-*.so
+#Expresion de prueba
+expresion = ["a","!"]
+print(expresion)
+expresion.reverse()
+print(expresion)
 
-# Distribution / packaging
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+pilao=[]
+poper=[]
+t=[]
+global i
+i = 0
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
+c_op=[]     #Columna1: operadores
+c_opdo1=[]  #Coluumna2: operando1
+c_opdo2=[]  #Columna3: operando2
+c_res=[]    #Columna4: resultado
 
-# Translations
-*.mo
-*.pot
+#LLenado de temporales USELESS
+for index in range(100):
+    t.append(index)
 
-# Django stuff:
-*.log
 
-# Sphinx documentation
-docs/_build/
+#Función que genera cuadruplos
+def genera_cuad( operador, opdo1, opdo2, resultado ):
+    c_op.append(operador)
+    c_opdo1.append(opdo1)
+    c_opdo2.append(opdo2)
+    c_res.append(resultado)
 
-# PyBuilder
-target/
+#Funcion parentesis
+def meter_parent ():
+    print("Entro parent")
+    global i
+    if len(poper) != 0 and poper[len(poper)-1] == "(":
+        print("Paréntesis")
+        pilao_n=[] #Pila generada
+        poper_n=[] #Pila generada
+        pilao.append(pilao_n)
+        poper.append(poper_n)
+        if len(poper) != 0 and poper[len(poper)-1] == ")":
+            poper.pop()
+            op=poper.pop()
+            oper1=pilao.pop()
+            oper2=pilao.pop()
+            temp=t[i]
+            genera_cuad(op, oper1, oper2, temp)
+            i = i+1
+        elif len(poper) != 0 and poper[len(poper)-1] == "(":
+            meter_parent()
+
+#Funcion multiplicacion y division
+def meter_multdiv():
+    print("Entro div")
+    global i
+    if len(poper) != 0 and (poper[len(poper)-1] == "*" or poper[len(poper)-1] == "/") :
+        print("Multiplicación o División")
+        op=poper.pop()
+        oper1=pilao.pop()
+        oper2=pilao.pop()
+        temp=t[i]
+        genera_cuad(op, oper1, oper2, temp) #Funcion de generacion de cuadruplos !!!!
+        pilao.append(temp)
+        i=i+1
+
+#fucnion suma y resta
+def meter_sumres():
+    print("Entro suma")
+    global i
+    if len(poper) != 0 and (poper[len(poper)-1] == "+" or poper[len(poper)-1] == "-"):
+        print("Suma o resta")
+        op=poper.pop()
+        oper1=pilao.pop()
+        oper2=pilao.pop()
+        temp=t[i]
+        genera_cuad(op, oper1, oper2, temp)#Funcion de generacion de cuadruplos !!!!
+        pilao.append(temp)
+        i=i+1
+
+#Funcion igual
+def meter_igual():
+    print("Entro igual")
+    if len(poper) != 0 and poper[len(poper)-1] == "=":
+        print("Igual")
+        op=poper.pop()
+        der=pilao.pop()
+        izq=pilao.pop()
+        #VERIFICAR TIPOS CON CUBO
+        genera_cuad(op, der, -1, izq)#Funcion de generacion de cuadruplos !!!!
+
+#Fucnion mayor que
+def meter_mayor():
+    global i
+    print("Entro mayor que")
+    global i
+    if len(poper) != 0 and poper[len(poper)-1] == ">":
+        print("Mayor que")
+        op=poper.pop()
+        der=pilao.pop()
+        izq=pilao.pop()
+        temp=t[i]
+        genera_cuad(op, izq, der, temp)#Funcion de generacion de cuadruplos !!!!
+        i=i+1
+
+#Fucnion menor que
+def meter_menor():
+    global i
+    print("Entro menor que")
+    global i
+    if len(poper) != 0 and poper[len(poper)-1] == "<":
+        print("Menor que")
+        op=poper.pop()
+        der=pilao.pop()
+        izq=pilao.pop()
+        temp=t[i]
+        genera_cuad(op, izq, der, temp)#Funcion de generacion de cuadruplos !!!!
+        i=i+1
+
+#Fucnion not
+def meter_not():
+    global i
+    print("Entro not")
+    if len(poper) != 0 and poper[len(poper)-1] == "!":
+        print("Not")
+        op=poper.pop()
+        oper1=pilao.pop()
+        temp=t[i]
+        genera_cuad(op, oper1, -1, temp)#Funcion de generacion de cuadruplos !!!!
+        pilao.append(temp)
+        i=i+1
+
+#Fucnion or
+def meter_or():
+    global i
+    print("Entro or")
+    global i
+    if len(poper) != 0 and poper[len(poper)-1] == "|":
+        print("Or")
+        op=poper.pop()
+        der=pilao.pop()
+        izq=pilao.pop()
+        temp=t[i]
+        genera_cuad(op, izq, der, temp)#Funcion de generacion de cuadruplos !!!!
+        i=i+1
+
+#Fucnion and
+def meter_and():
+    global i
+    print("Entro and")
+    global i
+    if len(poper) != 0 and poper[len(poper)-1] == "&&":
+        print("And")
+        op=poper.pop()
+        der=pilao.pop()
+        izq=pilao.pop()
+        temp=t[i]
+        genera_cuad(op, izq, der, temp)#Funcion de generacion de cuadruplos !!!!
+        i=i+1
+
+#LLenado de stacks pilao, poper
+while len(expresion)>0:
+    if len(expresion) != 0:
+        #if token==id:
+        pilao.append(expresion.pop()) #Meter id
+    if len(expresion) != 0:
+        #else: TERMINAR VALIDACIÓN DE OPERADORES
+        poper.append(expresion.pop()) #Meter operador
+
+pilao.reverse()
+poper.reverse()
+print(poper)
+print(pilao)
+
+
+while len(poper) > 0:
+    meter_multdiv()
+    meter_sumres()
+    meter_igual()
+    meter_parent()
+    meter_mayor()
+    meter_menor()
+    meter_not()
+    meter_and()
+    meter_or()
+
+print(c_op, "\n", c_opdo1, "\n", c_opdo2, "\n", c_res)
+#REVISAR PILA TIPOS con cubo
