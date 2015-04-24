@@ -126,8 +126,7 @@ def p_statement_mprl(p):
             """tipo : INT meteint
                     | FLOAT metefloat
                     | BOOL metebool"""
-            
-            
+
         def p_statement_metesint(p):
             """meteint : """
             if contador == 1:
@@ -139,8 +138,8 @@ def p_statement_mprl(p):
             if contador == 1:
                 global ListadeTokens3
                 print("Voy por float")
-                
-        def p_statement_metesbool(p):
+
+        def p_statement_metebool(p):
             """metebool : """
             if contador == 1:
                 global ListadeTokens3
@@ -170,11 +169,37 @@ def p_statement_mprl(p):
 
         def p_statement_expresion1(p):
             """expresion1 :
-                        | MAYORQUE blankspace exp
-                        | MENORQUE blankspace exp
-                        | AND blankspace exp
-                        | OR blankspace exp
-                        | NOT blankspace exp"""
+                        | MAYORQUE metemayorque blankspace exp
+                        | MENORQUE metemenorque blankspace exp
+                        | AND meteand blankspace exp
+                        | OR meteor blankspace exp
+                        | NOT metenot blankspace exp"""
+
+        def p_statement_metemayorque(p):
+            """metemayorque : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por mayorque >")
+        def p_statement_metemenorque(p):
+            """metemenorque : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por menorque <")
+        def p_statement_meteand(p):
+            """meteand : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por and &&")
+        def p_statement_meteor(p):
+            """meteor : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por or | ")
+        def p_statement_metenot(p):
+            """metenot : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por not !")
 
         def p_statement_exp(p):
             """exp : exp1"""
@@ -184,8 +209,19 @@ def p_statement_mprl(p):
 
         def p_statement_exp2(p):
             """exp2 :
-                    | MAS blankspace exp1
-                    | MENOS blankspace exp1"""
+                    | MAS metesuma blankspace exp1
+                    | MENOS meteresta blankspace exp1"""
+
+        def p_statement_metesuma(p):
+            """metesuma : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por or + ")
+        def p_statement_meteresta(p):
+            """meteresta : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por not -")
 
         def p_statement_termino(p):
             """termino : termino2"""
@@ -195,18 +231,29 @@ def p_statement_mprl(p):
 
         def p_statement_termino3(p):
             """termino3 :
-                    | MULTIPLICA termino2
-                    | DIVIDE termino2"""
+                    | MULTIPLICA metemultiplicacion termino2
+                    | DIVIDE metedivision termino2"""
+
+        def p_statement_metemultiplicacion(p):
+            """metemultiplicacion : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por or * ")
+        def p_statement_metedivision(p):
+            """metedivision : """
+            if contador == 1:
+                global ListadeTokens3
+                print("Voy por not /")
 
         def p_statement_factor(p):
-            """factor : PARENTESISIZQ expresion PARENTESISDER
+            """factor : PARENTESISIZQ meteparizq expresion PARENTESISDER meteparder
                     | varcte blankspace
-                    | MAS blankspace varcte blankspace
-                    | MENOS blankspace varcte blankspace"""
+                    | MAS metesuma blankspace varcte blankspace
+                    | MENOS meteresta blankspace varcte blankspace"""
 
         def p_statement_varcte(p):
             """varcte :
-                    | ID
+                    | ID meteid
                     | CTEINT
                     | CTEFLOAT"""
 
